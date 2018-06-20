@@ -1,11 +1,15 @@
 parameters:
     little_books:
         -
-            title: "Writing PHP CLI Apps with Symfony"
+            title: 'Writing Extraordinary Clean PHP CLI Apps with Symfony'
             year_released: 2018
             post_ids: [103, 105, 109]
 
         -
-            title: "Mastering Open-Source"
+            title: 'First Steps to Open-Source'
             year_released: 2017
             post_ids: [12, 13, 25, 54]
+
+#        -
+#            title: 'Hacking Symfony Dependency Injection'
+#            year_released: 2018
