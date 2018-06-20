@@ -11,7 +11,7 @@ id: talks
         {foreach $talks as $talk}
 <<<<<<< HEAD
             {var $postYear = $talk['year']}
-            {if $postYear != date('Y') && !isset($dateLines[$postYear])}
+            {if !isset($dateLines[$postYear])}
                 <h2 id="year-{$postYear}" class="text-center mt-5 mb-5">
 =======
             {var $talkYear = $talk['year']}
