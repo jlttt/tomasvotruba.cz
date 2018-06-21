@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>How Code Looks in every PHP Framework? | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+
+    <link href="/assets/font-awesome/css/font-awesome.min.css?v=1.5" rel="stylesheet" type="text/css">
+
+    <link href="/assets/bootstrap/bootstrap.min.css?v=1.5" rel="stylesheet" type="text/css">
+
+    <link href="/assets/prism/prism.css?v=1.5" rel="stylesheet" type="text/css">
+
+    <link href="/assets/css/style.css?v=1.5" rel="stylesheet" type="text/css">
+
+    <link href="/assets/css/checklist.css?v=1.5" rel="stylesheet" type="text/css">
+
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/checklist.js" async defer></script>
+</head>
+    <body>
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    Tomas Votruba
+                </li>
+                <li>
+                    <a href="/">Blog</a>
+                </li>
+                <li class="new">
+                    <a href="/little-books/" class="bg-success">
+                        <small>Books</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="/mentoring-and-lectures/">Mentoring & Lectures</a>
+                </li>
+                <li>
+                    <a href="/talks/">Talks</a>
+                </li>
+                <li>
+                    <a href="/about/">About</a>
+                </li>
+                <li>
+                    <a href="/contact/">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3">
+                <em class="fa fa-book"></em>
+                <br>
+                PHP Blog
+            </a>
+            <a href="/mentoring-and-lectures/" class="col-3 col-sm-3">
+                <em class="fa fa-graduation-cap"></em>
+                <br>
+                Lectures
+            </a>
+            <a href="/about/" class="col-3 col-sm-3">
+                <em class="fa fa-id-badge"></em>
+                <br>
+                About
+            </a>
+            <a href="/contact/" class="col-3 col-sm-3">
+                <em class="fa fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+</div>
+
+        <div>
+                <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>How Does Code Look in every PHP Framework?</h1>
+
+
+            <div class="table-responsive">
+                <table class="table table-stripped">
+                    <tr>
+                        <thead class="thead-inverse">
+                                <th class="text-center">
+                                    <nobr>Symfony</nobr>
+                                </th>
+                                <th class="text-center">
+                                    <nobr>Nette</nobr>
+                                </th>
+                        </thead>
+                    </tr>
+                            <tr>
+                                <td colspan="3" class="text-center" id="controller">
+                                    <a href="#controller">Controller</a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                        
+                                        <pre class="language-php">&lt;?php
+
+namespace App\Controller;
+
+final class SomeController
+{
+}
+</pre>
+                                </td>
+
+                                <td>
+                                        
+                                        <pre class="language-php">&lt;?php
+
+namespace App\Presenter;
+
+use Nette\Application\UI\Presenter;
+
+final class SomePresenter extends Presenter
+{
+}
+</pre>
+                                </td>
+                        </tr>
+                            <tr>
+                                <td colspan="3" class="text-center" id="action">
+                                    <a href="#action">Action</a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                        
+                                        <pre class="language-php">&lt;?php
+
+namespace App\Controller;
+
+final class SomeController
+{
+    public function listAction()
+    {
+    }
+}
+</pre>
+                                </td>
+
+                                <td>
+                                        
+                                        <pre class="language-php">&lt;?php
+
+namespace App\Presenter;
+
+use Nette\Application\UI\Presenter;
+
+final class SomePresenter extends Presenter
+{
+    public function actionList()
+    {
+    }
+}
+</pre>
+                                </td>
+                        </tr>
+                            <tr>
+                                <td colspan="3" class="text-center" id="response_request">
+                                    <a href="#response_request">Request &amp; Response</a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                        
+                                        <pre class="language-php">&lt;?php
+
+namespace App\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+
+final class SomeController
+{
+    public function listAction(Request $request): Response
+    {
+        return new Response('some content');
+    }
+}
+</pre>
+                                </td>
+
+                                <td>
+                                        
+                                        <pre class="language-php">&lt;?php
+
+namespace App\Presenter;
+
+use Nette\Application\UI\Presenter;
+
+final class SomePresenter extends Presenter
+{
+    // not possible, just specific route defined variables
+    public function actionList($category)
+    {
+    }
+}
+</pre>
+                                </td>
+                        </tr>
+                            <tr>
+                                <td colspan="3" class="text-center" id="controller_render">
+                                    <a href="#controller_render">Render in Controller</a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                        
+                                        <pre class="language-php">&lt;?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+final class SomeController extends Controller
+{
+    public function listAction()
+    {
+        // renders templates/some/list.html.twig
+        return $this-&gt;render('some/list.html.twig');
+    }
+}
+</pre>
+                                </td>
+
+                                <td>
+                                        
+                                        <pre class="language-php">&lt;?php
+
+namespace App\Presenter;
+
+use Nette\Application\UI\Presenter;
+
+final class SomePresenter extends Presenter
+{
+    public function actionList()
+    {
+        // app/templates/Some/list.latte is rendered by default,
+        // where "Some" is presenter prefix and "list" is action suffix
+    }
+}
+</pre>
+                                </td>
+                        </tr>
+                            <tr>
+                                <td colspan="3" class="text-center" id="controller_variable">
+                                    <a href="#controller_variable">Render Variable in controller</a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                        
+                                        <pre class="language-php">&lt;?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+final class SomeController extends Controller
+{
+    public function listAction()
+    {
+        return $this-&gt;render('some/list.html.twig', [
+            'someKey' =&gt; 'someValue'
+        ]);
+    }
+}
+</pre>
+                                </td>
+
+                                <td>
+                                        
+                                        <pre class="language-php">&lt;?php
+
+namespace App\Presenter;
+
+use Nette\Application\UI\Presenter;
+
+final class SomePresenter extends Presenter
+{
+    public function actionList()
+    {
+        $this-&gt;template-&gt;add('someKey', 'someValue');
+    }
+}
+</pre>
+                                </td>
+                        </tr>
+                            <tr>
+                                <td colspan="3" class="text-center" id="controller_service">
+                                    <a href="#controller_service">Get Service in Controller</a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                        
+                                        <pre class="language-php">&lt;?php
+
+namespace App\Controller;
+
+use App\SomeService;
+
+final class SomeController
+{
+    /**
+     * @var SomeService
+     */
+    private $someService;
+
+    public function __construct(SomeService $someService)
+    {
+        $this-&gt;someService = $someService;
+    }
+
+    public function listAction()
+    {
+        $someResult = $this-&gt;someService-&gt;someMethod();
+    }
+}
+</pre>
+                                </td>
+
+                                <td>
+                                        
+                                        <pre class="language-php">&lt;?php
+
+namespace App\Presenter;
+
+use App\SomeService;
+use Nette\Application\UI\Presenter;
+
+final class SomePresenter extends Presenter
+{
+    /**
+     * @var SomeService
+     */
+    private $someService;
+
+    public function __construct(SomeService $someService)
+    {
+        $this-&gt;someService = $someService;
+    }
+
+    public function actionList()
+    {
+        $someResult = $this-&gt;someService-&gt;someMethod();
+    }
+}
+</pre>
+                                </td>
+                        </tr>
+                            <tr>
+                                <td colspan="3" class="text-center" id="invokable_controller">
+                                    <a href="#invokable_controller">Invokeable controller</a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                        
+                                        <pre class="language-php">&lt;?php
+
+namespace App\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+
+final class SomeController
+{
+    public function __invoke(): Response
+    {
+        return new Response('some content');
+    }
+}
+</pre>
+                                </td>
+
+                                <td>
+                                        
+                                        <pre class="language-php">&lt;?php
+
+namespace App\Presenter;
+
+use Nette\Application\IPresenter;
+use Nette\Application\IResponse;
+use Nette\Application\Responses\TextResponse;
+
+final class SomePresenter implements IPresenter
+{
+    public function run(Request $request): IResponse
+    {
+        return new TextResponse('some content');
+    }
+}
+</pre>
+                                </td>
+                        </tr>
+                            <tr>
+                                <td colspan="3" class="text-center" id="service">
+                                    <a href="#service">Service Registration</a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                        
+                                        <pre class="language-yaml"># app/config/services.yml
+services:
+    App\SomeService: ~
+</pre>
+                                </td>
+
+                                <td>
+                                        
+                                        <pre class="language-yaml"># app/config/config.neon
+services:
+    - App\SomeService
+</pre>
+                                </td>
+                        </tr>
+                            <tr>
+                                <td colspan="3" class="text-center" id="route">
+                                    <a href="#route">Route</a>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                        <em><a href="../source/_data/php-frameworks/symfony.yml">add it</a></em>
+                                </td>
+
+                                <td>
+                                        <em><a href="../source/_data/php-frameworks/nette.yml">add it</a></em>
+                                </td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+        </div>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', "UA-46082345-1", 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<div class="text-center mt-5">
+    <hr>
+
+    <p>
+        <a href="https://github.com/tomasvotruba">GitHub</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/rss.xml">RSS</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://twitter.com/votrubaT">@votrubaT</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Runs on <a href="https://www.statie.org/">Statie</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        Hosted on <a href="https://github.com/tomasvotruba/tomasvotruba.cz">GitHub</a>
+    </p>
+
+    <p>
+        Like what I write about? <a href="/contact">Hire me</a> & we can work together
+    </p>
+</div>
+    </body>
+</html>
